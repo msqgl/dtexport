@@ -20,12 +20,16 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Main {
 
   private static final String FOLDER = "d:\\Profiles\\msqueglia\\Desktop\\";
   private static final String XML_NAME = "Dynatrace-exceptions.xml";
-  private static final String XLSX_NAME = "Dynatrace-exceptions.xlsx";
+  private static final String XLSX_NAME = "Dynatrace-exceptions_";
+  private static final String XLSX = ".xlsx";
+  private static final String DDMMYYY_HHMMSS = "ddMMyyy_hhmmss";
 
   public static void main(String[] args) throws IOException, SAXException, ParserConfigurationException {
 
@@ -77,8 +81,11 @@ public class Main {
     sheet.autoSizeColumn(3);
     sheet.autoSizeColumn(4);
 
-    FileOutputStream outputStream = new FileOutputStream(FOLDER + XLSX_NAME);
+    final Date date = new Date();
+    final SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DDMMYYY_HHMMSS);
+    FileOutputStream outputStream = new FileOutputStream(FOLDER + XLSX_NAME + simpleDateFormat.format(date) + XLSX);
     workbook.write(outputStream);
+    System.out.println("END!");
   }
 
   private static void createFirstRow(XSSFWorkbook workbook, XSSFSheet sheet) {
