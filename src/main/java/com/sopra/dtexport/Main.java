@@ -29,7 +29,7 @@ public class Main {
   private static final String XML_NAME = "Dynatrace-exceptions.xml";
   private static final String XLSX_NAME = "Dynatrace-exceptions_";
   private static final String XLSX = ".xlsx";
-  private static final String DDMMYYY_HHMMSS = "ddMMyyy_hhmmss";
+  private static final String DDMMYYY_HHMMSS = "ddMMyyy_HHmmss";
 
   public static void main(String[] args) throws IOException, SAXException, ParserConfigurationException {
 
